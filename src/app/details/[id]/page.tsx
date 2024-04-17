@@ -5,8 +5,14 @@ export const metadata: Metadata = {
     description: "Page with item details",
 };
 
-const Details = () => (
-    <div>Details</div>
+interface Props {
+    params: {
+        id: string
+    }
+}
+
+const Details = ({params}: Props) => (
+    <div>Details: {params.id}</div>
 )
 
 export default Details

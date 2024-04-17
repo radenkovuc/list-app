@@ -1,12 +1,11 @@
-import type {Metadata} from "next";
 import {ReactNode} from "react";
+import {AppRouterCacheProvider} from '@mui/material-nextjs/v14-appRouter';
 
-import "./globals.css";
-
-export const metadata: Metadata = {
-    title: "Items list",
-    description: "Page with list of items",
-};
+import './globals.css'
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 interface Props {
     children: ReactNode;
@@ -14,7 +13,11 @@ interface Props {
 
 const RootLayout = ({children}: Props) => (
     <html lang="en">
-    <body>{children}</body>
+    <body>
+    <AppRouterCacheProvider options={{enableCssLayer: true}}>
+        {children}
+    </AppRouterCacheProvider>
+    </body>
     </html>
 );
 
