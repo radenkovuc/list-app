@@ -12,7 +12,7 @@ const NotFound = () => (
     <>
         <Header title="Not found page"/>
         <Body>
-            <div>Not found page</div>
+            <div>Page not found</div>
         </Body>
     </>)
 

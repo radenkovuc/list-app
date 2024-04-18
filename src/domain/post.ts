@@ -1,4 +1,4 @@
-export type Item = {
+export type Post = {
     id: number
     userId: number
     title: string,

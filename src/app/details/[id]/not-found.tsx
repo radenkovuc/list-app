@@ -5,15 +5,15 @@ import Header from "@/components/header";
 import Body from "@/components/body";
 
 export const metadata: Metadata = {
-    title: "Item not Found",
-    description: "Item not Found"
+    title: "Post not Found",
+    description: "Post not Found"
 }
 
 const NotFound = () => (
     <>
         <Header title="Not found page"/>
         <Body>
-            <Typography>Item not Found</Typography>
+            <Typography>Post not found</Typography>
         </Body>
     </>)
 
