@@ -1,4 +1,3 @@
-import {Typography} from "@mui/material";
 import {notFound} from "next/navigation";
 
 import {getPost} from "@/services";
@@ -6,6 +5,7 @@ import {Post} from "@/domain";
 
 import Header from "@/components/header";
 import Body from "@/components/body";
+import PostDetails from "@/components/post-details";
 
 
 interface Props {
@@ -36,10 +36,9 @@ const Details = async ({params}: Props) => {
 
     return (
         <>
-            <Header title="Details page"/>
+            <Header title="Post details"/>
             <Body>
-                <Typography>Title: {post.title}</Typography>
-                <Typography>Body: {post.body}</Typography>
+                <PostDetails post={post}/>
             </Body>
         </>
     )
