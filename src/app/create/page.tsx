@@ -1,5 +1,4 @@
 import type {Metadata} from "next";
-import {Container} from "@mui/material";
 import React from "react";
 
 import Header from "@/components/header";
@@ -13,12 +12,12 @@ export const metadata: Metadata = {
 };
 
 const Create = () => (
-    <Container maxWidth="lg">
-        <Header title="Create page" actions={<CreateButton/>}/>
+    <>
+        <Header title="Create post" actions={<CreateButton/>}/>
         <Body>
             <CreatePostDetails/>
         </Body>
-    </Container>
+    </>
 )
 
 export const dynamic = 'force-dynamic'

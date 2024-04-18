@@ -37,12 +37,12 @@ const Details = async ({params}: Props) => {
     }
 
     return (
-        <Container maxWidth="lg">
+        <>
             <Header title="Post details" actions={<PostActions/>}/>
             <Body>
                 <PostDetails post={post}/>
             </Body>
-        </Container>
+        </>
     )
 }
 
