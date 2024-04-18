@@ -1,4 +1,8 @@
 import type {Metadata} from "next";
+import {Typography} from "@mui/material";
+
+import Header from "@/components/header";
+import Body from "@/components/body";
 
 export const metadata: Metadata = {
     title: "Item details",
@@ -12,7 +16,12 @@ interface Props {
 }
 
 const Details = ({params}: Props) => (
-    <div>Details: {params.id}</div>
+    <>
+        <Header title="Details page"/>
+        <Body>
+            <Typography>Item: {params.id}</Typography>
+        </Body>
+    </>
 )
 
 export default Details
