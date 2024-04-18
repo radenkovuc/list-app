@@ -2,6 +2,8 @@ import React, {ReactNode} from 'react';
 import {Post} from "@/domain";
 
 type StateServices = {
+    readonly message?: string
+    readonly setMessage: React.Dispatch<React.SetStateAction<string | undefined>>;
     readonly postId?: number;
     readonly postTitle: string;
     readonly setPostTitle: React.Dispatch<React.SetStateAction<string>>;
@@ -17,6 +19,7 @@ interface Props {
 const StateContext = React.createContext<StateServices | undefined>(undefined);
 
 export const StateProvider = ({children}: Props): JSX.Element => {
+    const [message, setMessage] = React.useState<string | undefined>();
     const [postTitle, setPostTitle] = React.useState<string>('');
     const [postBody, setPostBody] = React.useState<string>('');
     const [postId, setPostId] = React.useState<number | undefined>();
@@ -30,6 +33,8 @@ export const StateProvider = ({children}: Props): JSX.Element => {
     return (
         <StateContext.Provider
             value={{
+                message,
+                setMessage,
                 postId,
                 postTitle,
                 setPostTitle,

@@ -7,13 +7,14 @@ import {useRouter} from "next/navigation";
 import {createPost} from "@/services";
 
 export const CreateButton = () => {
-    const {postBody, postTitle, setPostTitle} = useStateContext();
+    const {postBody, postTitle, setMessage} = useStateContext();
     const router = useRouter()
 
     const onClick = () => {
         void createPost(postTitle, postBody)
+        setMessage("New post created")
         router.push('/')
     }
 
-    return <Button onClick={onClick}>Create</Button>
+    return <Button variant="contained" onClick={onClick}>Create</Button>
 }

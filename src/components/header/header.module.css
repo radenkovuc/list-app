@@ -6,6 +6,10 @@
     @apply text-blue-800 underline;
 }
 
+.meniContainer {
+    @apply flex justify-around items-center;
+}
+
 .headerContainer {
     @apply flex justify-center;
 }

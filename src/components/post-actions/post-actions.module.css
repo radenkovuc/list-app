@@ -1,3 +1,7 @@
 .container {
     @apply flex;
 }
+
+.button {
+    @apply mx-2
+}

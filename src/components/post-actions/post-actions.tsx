@@ -6,22 +6,29 @@ import {useRouter} from "next/navigation";
 
 import {deletePost, updatePost} from "@/services";
 
+import classes from "./post-actions.module.css";
+
 export const PostActions = () => {
-    const {postBody, postId, postTitle, setPostTitle} = useStateContext();
+    const {postBody, postId, postTitle, setMessage} = useStateContext();
     const router = useRouter()
 
     const onUpdate = () => {
         if (postId) {
             void updatePost(postId, postTitle, postBody)
+            setMessage("Post updated")
         }
     }
 
-    const onClick = () => {
+    const onDelete = () => {
         if (postId) {
             void deletePost(postId)
+            setMessage("Post deleted")
             router.push('/')
         }
     }
 
-    return <Button onClick={onClick}>Update</Button>
+    return <div className={classes.container}>
+        <Button onClick={onUpdate} className={classes.button} variant="contained">Update</Button>
+        <Button onClick={onDelete} className={classes.button} variant="outlined">Delete</Button>
+    </div>
 }

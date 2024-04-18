@@ -5,6 +5,8 @@ import {AppRouterCacheProvider} from '@mui/material-nextjs/v14-appRouter';
 
 import {StateProvider} from "@/state";
 
+import Message from "@/components/message";
+
 import './globals.css'
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -21,6 +23,7 @@ const RootLayout = ({children}: Props) => (
     <AppRouterCacheProvider options={{enableCssLayer: true}}>
         <StateProvider>
             {children}
+            <Message/>
         </StateProvider>
     </AppRouterCacheProvider>
     </body>

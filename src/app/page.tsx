@@ -1,5 +1,4 @@
 import type {Metadata} from "next";
-import Link from "next/link";
 
 import {Post} from "@/domain";
 import {getPosts} from "@/services";
@@ -7,6 +6,7 @@ import {getPosts} from "@/services";
 import Header from "@/components/header";
 import Body from "@/components/body";
 import Posts from "@/components/posts";
+import NewPostButton from "@/components/new-post-button";
 
 export const metadata: Metadata = {
     title: "Posts list",
@@ -18,7 +18,7 @@ const Home = async () => {
 
     return (
         <>
-            <Header title="Posts" actions={<Link href="/create">New post</Link>}/>
+            <Header title="Posts" actions={<NewPostButton/>}/>
             <Body>
                 <Posts posts={posts}/>
             </Body>

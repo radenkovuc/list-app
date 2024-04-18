@@ -3,5 +3,5 @@
 }
 
 .text {
-    @apply text-gray-800 no-underline;
+    @apply text-gray-800 no-underline w-full;
 }
