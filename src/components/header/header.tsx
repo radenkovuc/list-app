@@ -11,8 +11,8 @@ interface Props {
 export const Header = ({title, actions}: Props) =>
     <header className={classes.container}>
         <Link className={classes.link} href='/'>Home</Link>
+        {actions}
         <div className={classes.headerContainer}>
             <h4 className={classes.title}>{title}</h4>
-            {actions}
         </div>
     </header>

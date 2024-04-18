@@ -1,3 +1,7 @@
 .posts {
     @apply m-2 w-full;
 }
+
+.text {
+    @apply text-gray-800 no-underline;
+}

@@ -1,4 +1,6 @@
 import type {Metadata} from "next";
+import Link from "next/link";
+import {Container} from "@mui/material";
 
 import Header from "@/components/header";
 import Body from "@/components/body";
@@ -10,12 +12,12 @@ export const metadata: Metadata = {
 };
 
 const Home = () => (
-    <>
-        <Header title="Posts"/>
+    <Container maxWidth="lg">
+        <Header title="Posts" actions={<Link href="/create">New post</Link>}/>
         <Body>
             <Posts/>
         </Body>
-    </>
+    </Container>
 )
 
 export const dynamic = 'force-dynamic'

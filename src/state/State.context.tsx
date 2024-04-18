@@ -1,10 +1,13 @@
 import React, {ReactNode} from 'react';
+import {Post} from "@/domain";
 
 type StateServices = {
+    readonly postId?: number;
     readonly postTitle: string;
     readonly setPostTitle: React.Dispatch<React.SetStateAction<string>>;
     readonly postBody: string;
     readonly setPostBody: React.Dispatch<React.SetStateAction<string>>;
+    readonly setPost: (post: Post) => void;
 };
 
 interface Props {
@@ -16,14 +19,23 @@ const StateContext = React.createContext<StateServices | undefined>(undefined);
 export const StateProvider = ({children}: Props): JSX.Element => {
     const [postTitle, setPostTitle] = React.useState<string>('');
     const [postBody, setPostBody] = React.useState<string>('');
+    const [postId, setPostId] = React.useState<number | undefined>();
 
+    const setPost = (post: Post) => {
+        setPostTitle(post.title);
+        setPostBody(post.body);
+        setPostId(post.id);
+    }
+    
     return (
         <StateContext.Provider
             value={{
+                postId,
                 postTitle,
                 setPostTitle,
                 postBody,
-                setPostBody
+                setPostBody,
+                setPost
             }}
         >
             {children}

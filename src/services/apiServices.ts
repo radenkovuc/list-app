@@ -1,3 +1,5 @@
+"use server"
+
 import axios from "axios";
 
 export const getData = async <T>(url: string): Promise<T> => {
@@ -10,6 +12,7 @@ export const postData = async (url: string, data: object): Promise<void> => {
 }
 
 export const putData = async (url: string, data: object): Promise<void> => {
+    console.log('process.env.API_URL', process.env.API_URL)
     await axios.put(process.env.API_URL + url, data);
 }
 

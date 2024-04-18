@@ -5,6 +5,7 @@ import {TextField} from "@mui/material";
 
 import {useStateContext} from "@/state";
 
+import classes from "./post-title.module.css";
 
 export const PostTitle = () => {
     const {postTitle, setPostTitle} = useStateContext();
@@ -19,5 +20,6 @@ export const PostTitle = () => {
         value={postTitle}
         onChange={onChange}
         fullWidth
+        className={classes.container}
     />
 }

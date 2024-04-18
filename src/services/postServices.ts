@@ -14,14 +14,14 @@ export const getPost = async (id: string): Promise<Post | null> => {
     }
 }
 
-export const createPosts = async (title: string, body: string): Promise<void> => {
+export const createPost = async (title: string, body: string): Promise<void> => {
     await postData('posts', {title, body})
 }
 
-export const updatePost = async (id: string, title: string, body: string): Promise<void> => {
-    await putData(`post/${id}`, {title, body})
+export const updatePost = async (id: number, title: string, body: string): Promise<void> => {
+    await putData(`posts/${id}`, {title, body})
 }
 
-export const deletePost = async (id: string): Promise<void> => {
-    await deleteData(`post/${id}`)
+export const deletePost = async (id: number): Promise<void> => {
+    await deleteData(`posts/${id}`)
 }

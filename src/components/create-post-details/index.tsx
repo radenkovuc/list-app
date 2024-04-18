@@ -1,0 +1,1 @@
+export {CreatePostDetails as default} from "./create-post-details"

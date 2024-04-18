@@ -1,4 +1,5 @@
 import {notFound} from "next/navigation";
+import {Container} from "@mui/material";
 
 import {getPost} from "@/services";
 import {Post} from "@/domain";
@@ -6,6 +7,7 @@ import {Post} from "@/domain";
 import Header from "@/components/header";
 import Body from "@/components/body";
 import PostDetails from "@/components/post-details";
+import PostActions from "@/components/post-actions";
 
 
 interface Props {
@@ -35,12 +37,12 @@ const Details = async ({params}: Props) => {
     }
 
     return (
-        <>
-            <Header title="Post details"/>
+        <Container maxWidth="lg">
+            <Header title="Post details" actions={<PostActions/>}/>
             <Body>
                 <PostDetails post={post}/>
             </Body>
-        </>
+        </Container>
     )
 }
 
