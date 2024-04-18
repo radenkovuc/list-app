@@ -11,7 +11,7 @@ import PostBody from "@/components/post-body";
 import classes from "./post-details.module.css";
 
 interface Props {
-    post: Post
+    post?: Post
 }
 
 export const PostDetails = ({post}: Props) => {

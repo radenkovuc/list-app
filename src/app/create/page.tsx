@@ -3,8 +3,8 @@ import React from "react";
 
 import Header from "@/components/header";
 import Body from "@/components/body";
-import CreatePostDetails from "../../components/create-post-details";
 import CreateButton from "@/components/create-button";
+import PostDetails from "@/components/post-details";
 
 export const metadata: Metadata = {
     title: "Create new item",
@@ -15,7 +15,7 @@ const Create = () => (
     <>
         <Header title="Create post" actions={<CreateButton/>}/>
         <Body>
-            <CreatePostDetails/>
+            <PostDetails/>
         </Body>
     </>
 )

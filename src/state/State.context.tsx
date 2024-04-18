@@ -7,7 +7,7 @@ type StateServices = {
     readonly setPostTitle: React.Dispatch<React.SetStateAction<string>>;
     readonly postBody: string;
     readonly setPostBody: React.Dispatch<React.SetStateAction<string>>;
-    readonly setPost: (post: Post) => void;
+    readonly setPost: (post?: Post) => void;
 };
 
 interface Props {
@@ -21,12 +21,12 @@ export const StateProvider = ({children}: Props): JSX.Element => {
     const [postBody, setPostBody] = React.useState<string>('');
     const [postId, setPostId] = React.useState<number | undefined>();
 
-    const setPost = (post: Post) => {
-        setPostTitle(post.title);
-        setPostBody(post.body);
-        setPostId(post.id);
+    const setPost = (post?: Post) => {
+        setPostTitle(post?.title || "");
+        setPostBody(post?.body || "");
+        setPostId(post?.id);
     }
-    
+
     return (
         <StateContext.Provider
             value={{
