@@ -1,33 +1,72 @@
 import React, {ReactNode} from 'react';
-import {Post} from "@/domain";
+
+import {Field, FieldStatus, Post} from "@/domain";
 
 type StateServices = {
     readonly message?: string
     readonly setMessage: React.Dispatch<React.SetStateAction<string | undefined>>;
     readonly postId?: number;
-    readonly postTitle: string;
-    readonly setPostTitle: React.Dispatch<React.SetStateAction<string>>;
-    readonly postBody: string;
-    readonly setPostBody: React.Dispatch<React.SetStateAction<string>>;
+    readonly postTitle: Field;
+    readonly postBody: Field;
     readonly setPost: (post?: Post) => void;
+    readonly updateTitle: (title: string) => void
+    readonly updateBody: (body: string) => void
+    readonly validatePost: () => void
 };
 
 interface Props {
     readonly children: ReactNode;
 }
 
+const INITIAL_FIELD: Field = {
+    value: "",
+    status: FieldStatus.INITIAL
+}
+
 const StateContext = React.createContext<StateServices | undefined>(undefined);
 
 export const StateProvider = ({children}: Props): JSX.Element => {
     const [message, setMessage] = React.useState<string | undefined>();
-    const [postTitle, setPostTitle] = React.useState<string>('');
-    const [postBody, setPostBody] = React.useState<string>('');
+    const [postTitle, setPostTitle] = React.useState<Field>(INITIAL_FIELD);
+    const [postBody, setPostBody] = React.useState<Field>(INITIAL_FIELD);
     const [postId, setPostId] = React.useState<number | undefined>();
 
     const setPost = (post?: Post) => {
-        setPostTitle(post?.title || "");
-        setPostBody(post?.body || "");
-        setPostId(post?.id);
+        if (post) {
+            setPostTitle({value: post.title, status: FieldStatus.VALID});
+            setPostBody({value: post.body, status: FieldStatus.VALID});
+            setPostId(post.id)
+        } else {
+            setPostBody(INITIAL_FIELD)
+            setPostTitle(INITIAL_FIELD)
+            setPostId(undefined)
+        }
+    }
+
+    const updateTitle = (title: string) => {
+        setPostTitle({
+            value: title,
+            status: title ? FieldStatus.VALID : FieldStatus.INVALID
+        });
+    }
+
+    const updateBody = (body: string) => {
+        setPostBody({
+            value: body,
+            status: body ? FieldStatus.VALID : FieldStatus.INVALID
+        });
+    }
+
+    const validatePost = () => {
+        setPostTitle({
+            value: postTitle.value,
+            status: postTitle.value ? FieldStatus.VALID : FieldStatus.INVALID
+        });
+        setPostBody({
+            value: postBody.value,
+            status: postBody.value ? FieldStatus.VALID : FieldStatus.INVALID
+        });
+
     }
 
     return (
@@ -37,10 +76,11 @@ export const StateProvider = ({children}: Props): JSX.Element => {
                 setMessage,
                 postId,
                 postTitle,
-                setPostTitle,
                 postBody,
-                setPostBody,
-                setPost
+                setPost,
+                updateTitle,
+                updateBody,
+                validatePost
             }}
         >
             {children}

@@ -5,6 +5,7 @@ import {Button} from "@mui/material";
 import {useRouter} from "next/navigation";
 
 import {deletePost, updatePost} from "@/services";
+import {FieldStatus} from "@/domain";
 
 import classes from "./post-actions.module.css";
 
@@ -13,8 +14,8 @@ export const PostActions = () => {
     const router = useRouter()
 
     const onUpdate = () => {
-        if (postId) {
-            void updatePost(postId, postTitle, postBody)
+        if (postId && postTitle.status === FieldStatus.VALID && postBody.status === FieldStatus.VALID) {
+            void updatePost(postId, postTitle.value, postBody.value)
             setMessage("Post updated")
         }
     }
