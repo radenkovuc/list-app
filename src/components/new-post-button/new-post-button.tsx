@@ -2,11 +2,12 @@
 
 import {Button} from "@mui/material";
 import {useRouter} from "next/navigation";
+import {ReactNode} from "react";
 
-export const NewPostButton = () => {
+export const NewPostButton = (): ReactNode => {
     const router = useRouter()
 
-    const onClick = () => {
+    const onClick = (): void  => {
         router.push('/create')
     }
 

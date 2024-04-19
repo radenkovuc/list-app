@@ -1,1 +1,1 @@
-export {getPosts, getPost, createPost, deletePost, updatePost} from "./postServices"
+export {getPosts, getPost, createPost, deletePost, updatePost} from "./post-services"

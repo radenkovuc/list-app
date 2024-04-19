@@ -1,28 +1,29 @@
 'use client'
 
-import React, {useEffect} from "react";
+import React, {ReactNode, useEffect} from "react";
 
 import {Post} from "@/domain";
 import {useStateContext} from "@/state";
 
-import PostTitle from "@/components/post-title";
-import PostBody from "@/components/post-body";
-
+import {PostTitle} from "./post-title";
+import {PostBody} from "./post-body";
 import classes from "./post-details.module.css";
 
 interface Props {
     post?: Post
 }
 
-export const PostDetails = ({post}: Props) => {
+export const PostDetails = ({post}: Props): ReactNode => {
     const {setPost} = useStateContext();
 
     useEffect(() => {
         setPost(post)
-    }, [post])
+    }, [post, setPost])
 
-    return <div className={classes.container}>
-        <PostTitle/>
-        <PostBody/>
-    </div>
+    return (
+        <div className={classes.container}>
+            <PostTitle/>
+            <PostBody/>
+        </div>
+    )
 }

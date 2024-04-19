@@ -1,1 +1,1 @@
-export {Message as default} from "./messages"
+export {Message as default} from "./message"

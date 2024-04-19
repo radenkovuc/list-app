@@ -17,7 +17,7 @@ interface Props {
     children: ReactNode;
 }
 
-const RootLayout = ({children}: Props) => (
+const RootLayout = ({children}: Props): ReactNode =>
     <html lang="en">
     <body>
     <AppRouterCacheProvider options={{enableCssLayer: true}}>
@@ -28,6 +28,5 @@ const RootLayout = ({children}: Props) => (
     </AppRouterCacheProvider>
     </body>
     </html>
-);
 
 export default RootLayout

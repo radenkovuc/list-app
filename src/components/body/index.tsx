@@ -1,1 +1,0 @@
-export {Body as default} from "./body"

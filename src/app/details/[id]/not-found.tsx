@@ -1,20 +1,16 @@
 import {Metadata} from "next";
-import {Typography} from "@mui/material";
+import {ReactNode} from "react";
 
-import Header from "@/components/header";
-import Body from "@/components/body";
+import Layout from "@/components/layout";
 
 export const metadata: Metadata = {
-    title: "Post not Found",
-    description: "Post not Found"
+    title: "Not found",
+    description: "Post not found"
 }
 
-const NotFound = () => (
-    <>
-        <Header title="Not found page"/>
-        <Body>
-            <Typography>Post not found</Typography>
-        </Body>
-    </>)
+const NotFound = (): ReactNode =>
+    <Layout title="Not found page">
+        <div>Post not found</div>
+    </Layout>
 
 export default NotFound

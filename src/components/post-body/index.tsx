@@ -1,1 +1,0 @@
-export {PostBody as default} from "./post-body"

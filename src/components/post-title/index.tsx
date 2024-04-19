@@ -1,1 +1,0 @@
-export {PostTitle as default} from "./post-title"

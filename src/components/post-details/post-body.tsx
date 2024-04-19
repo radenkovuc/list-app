@@ -1,14 +1,14 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import {TextField} from "@mui/material";
 
 import {useStateContext} from "@/state";
 import {FieldStatus} from "@/domain";
 
 
-export const PostBody = () => {
+export const PostBody = (): ReactNode => {
     const {postBody, updateBody} = useStateContext();
 
-    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         updateBody(event.target.value);
     }
 

@@ -1,18 +1,17 @@
 'use client'
 
-import React from "react";
 import {TextField} from "@mui/material";
+import React, {ReactNode} from "react";
 
 import {useStateContext} from "@/state";
-
 import {FieldStatus} from "@/domain";
 
-import classes from "./post-title.module.css";
+import classes from "./post-details.module.css";
 
-export const PostTitle = () => {
+export const PostTitle = (): ReactNode => {
     const {postTitle, updateTitle} = useStateContext();
 
-    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         updateTitle(event.target.value);
     }
 
@@ -25,7 +24,7 @@ export const PostTitle = () => {
         value={postTitle.value}
         onChange={onChange}
         fullWidth
-        className={classes.container}
+        className={classes.field}
         helperText={isInvalidField ? "Field can not be empty." : ""}
     />
 }

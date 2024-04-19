@@ -8,7 +8,7 @@ interface Props {
     actions?: ReactNode
 }
 
-export const Header = ({title, actions}: Props) =>
+export const Header = ({title, actions}: Props):ReactNode =>
     <header className={classes.container}>
         <div className={classes.meniContainer}>
             <Link className={classes.link} href='/'>Home</Link>

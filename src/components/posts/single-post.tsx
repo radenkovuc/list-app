@@ -1,6 +1,6 @@
-import Link from "next/link";
-import React from "react";
 import {ListItem, ListItemButton, ListItemText} from "@mui/material";
+import Link from "next/link";
+import React, {ReactNode} from "react";
 
 import {Post} from "@/domain";
 
@@ -10,7 +10,7 @@ interface Props {
     post: Post;
 }
 
-export const SinglePost = async ({post}: Props) => (
+export const SinglePost = ({post}: Props): ReactNode =>
     <ListItem disablePadding alignItems="center">
         <ListItemButton>
             <Link href={`/details/${post.id}`} className={classes.text}>
@@ -18,4 +18,3 @@ export const SinglePost = async ({post}: Props) => (
             </Link>
         </ListItemButton>
     </ListItem>
-)

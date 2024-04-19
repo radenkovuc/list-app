@@ -1,15 +1,16 @@
 import {useSnackbar} from '@mui/base/useSnackbar';
 import {ClickAwayListener} from '@mui/base/ClickAwayListener';
 import {Typography} from "@mui/material";
+import {ReactNode} from "react";
 
-import classes from "./snackbar.module.css";
+import classes from "./message.module.css";
 
 interface Props {
     message: string,
     onClose: () => void
 }
 
-export const Snackbar = ({message, onClose}: Props) => {
+export const Snackbar = ({message, onClose}: Props): ReactNode => {
     const {getRootProps, onClickAway} = useSnackbar({
         onClose,
         open: true,

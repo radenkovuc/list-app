@@ -1,13 +1,14 @@
 'use client'
 
-import {useStateContext} from "@/state";
 import {Button} from "@mui/material";
 import {useRouter} from "next/navigation";
+import {ReactNode} from "react";
 
 import {createPost} from "@/services";
 import {FieldStatus} from "@/domain";
+import {useStateContext} from "@/state";
 
-export const CreateButton = () => {
+export const CreateButton = (): ReactNode => {
     const {postBody, postTitle, setMessage, validatePost} = useStateContext();
     const router = useRouter()
 

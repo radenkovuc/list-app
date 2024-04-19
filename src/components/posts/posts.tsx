@@ -1,7 +1,7 @@
 "use client"
 
-import React from "react";
 import {List} from "@mui/material";
+import React, {ReactNode} from "react";
 
 import {Post} from "@/domain";
 
@@ -12,9 +12,7 @@ interface Props {
     posts: Post[]
 }
 
-export const Posts = async ({posts}: Props) => {
-
-    return <List className={classes.posts}>
+export const Posts = ({posts}: Props): ReactNode =>
+    <List className={classes.posts}>
         {posts.map(post => <SinglePost key={post.id} post={post}/>)}
     </List>
-}

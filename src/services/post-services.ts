@@ -1,6 +1,6 @@
-import {Post} from "@/domain/post";
+import {Post} from "@/domain";
 
-import {deleteData, getData, postData, putData} from "./apiServices";
+import {deleteData, getData, postData, putData} from "./api-services";
 
 export const getPosts = async (): Promise<Post[]> => {
     return getData<Post[]>('posts')

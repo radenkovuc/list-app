@@ -1,13 +1,13 @@
 import {notFound} from "next/navigation";
-import {Container} from "@mui/material";
+import {Metadata} from "next";
+import {ReactNode} from "react";
 
 import {getPost} from "@/services";
 import {Post} from "@/domain";
 
-import Header from "@/components/header";
-import Body from "@/components/body";
 import PostDetails from "@/components/post-details";
 import PostActions from "@/components/post-actions";
+import Layout from "@/components/layout";
 
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
     }
 }
 
-export async function generateMetadata({params}: Props) {
+export async function generateMetadata({params}: Props): Promise<Metadata> {
     const post: Post | null = await getPost(params.id)
 
     if (!post) {
@@ -29,7 +29,7 @@ export async function generateMetadata({params}: Props) {
     }
 }
 
-const Details = async ({params}: Props) => {
+const Details = async ({params}: Props): Promise<ReactNode> => {
     const post: Post | null = await getPost(params.id)
 
     if (!post) {
@@ -37,12 +37,9 @@ const Details = async ({params}: Props) => {
     }
 
     return (
-        <>
-            <Header title="Post details" actions={<PostActions/>}/>
-            <Body>
-                <PostDetails post={post}/>
-            </Body>
-        </>
+        <Layout title="Post details" actions={<PostActions/>}>
+            <PostDetails post={post}/>
+        </Layout>
     )
 }
 

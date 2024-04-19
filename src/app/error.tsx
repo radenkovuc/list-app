@@ -1,22 +1,18 @@
 'use client'
 
 import {Metadata} from "next";
-import {Typography} from "@mui/material";
+import {ReactNode} from "react";
 
-import Header from "@/components/header";
-import Body from "@/components/body";
+import Layout from "@/components/layout";
 
 export const metadata: Metadata = {
     title: "Error",
     description: "Something went wrong"
 }
 
-const ErrorPage = () => (
-    <>
-        <Header title="Error page"/>
-        <Body>
-            < Typography>Something went wrong</Typography>
-        </Body>
-    </>)
+const ErrorPage = (): ReactNode =>
+    <Layout title="Error page">
+        <div>Something went wrong</div>
+    </Layout>
 
 export default ErrorPage

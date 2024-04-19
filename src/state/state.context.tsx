@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React, {ReactNode, useCallback} from 'react';
 
 import {Field, FieldStatus, Post} from "@/domain";
 
@@ -25,13 +25,13 @@ const INITIAL_FIELD: Field = {
 
 const StateContext = React.createContext<StateServices | undefined>(undefined);
 
-export const StateProvider = ({children}: Props): JSX.Element => {
+export const StateProvider = ({children}: Props): ReactNode => {
     const [message, setMessage] = React.useState<string | undefined>();
     const [postTitle, setPostTitle] = React.useState<Field>(INITIAL_FIELD);
     const [postBody, setPostBody] = React.useState<Field>(INITIAL_FIELD);
     const [postId, setPostId] = React.useState<number | undefined>();
 
-    const setPost = (post?: Post) => {
+    const setPost = useCallback((post?: Post): void => {
         if (post) {
             setPostTitle({value: post.title, status: FieldStatus.VALID});
             setPostBody({value: post.body, status: FieldStatus.VALID});
@@ -41,16 +41,16 @@ export const StateProvider = ({children}: Props): JSX.Element => {
             setPostTitle(INITIAL_FIELD)
             setPostId(undefined)
         }
-    }
+    }, [])
 
-    const updateTitle = (title: string) => {
+    const updateTitle = (title: string): void => {
         setPostTitle({
             value: title,
             status: title ? FieldStatus.VALID : FieldStatus.INVALID
         });
     }
 
-    const updateBody = (body: string) => {
+    const updateBody = (body: string): void => {
         setPostBody({
             value: body,
             status: body ? FieldStatus.VALID : FieldStatus.INVALID
